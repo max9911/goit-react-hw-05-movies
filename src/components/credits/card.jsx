@@ -7,7 +7,7 @@ const Card = ({ data }) => {
   return (
     <>
       <li className={css.container}>
-        <img src={imgUrl} alt="No photo" className={css.img}></img>
+        <img src={imgUrl} alt="No Actor/Actress img" className={css.img}></img>
         <h3>{data.original_name}</h3>
         <p>Character: {data.character}</p>
       </li>
