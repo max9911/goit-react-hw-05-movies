@@ -1,0 +1,17 @@
+.links {
+  /* font-size: min(5vh, 5vw); */
+  font-size: 2vh;
+  margin: 0px;
+  padding-left: 2%;
+  color: white;
+}
+
+.nav_bar {
+  width: 100vw;
+  height: 5vh;
+  /* height: max(10vh, 100px); */
+  background-color: black;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}

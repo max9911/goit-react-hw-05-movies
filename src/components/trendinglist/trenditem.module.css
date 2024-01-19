@@ -1,0 +1,14 @@
+.links {
+  list-style: circle;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.noline {
+  text-decoration: none;
+}
+.span {
+  font-size: 20px;
+  color: black;
+  margin-left: 15px;
+}
