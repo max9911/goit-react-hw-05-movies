@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import css from './moviesearc.module.css';
 
 import { useSearchParams } from 'react-router-dom';
@@ -16,10 +16,10 @@ const MovieSearch = () => {
     evt.preventDefault();
     setSearch({ search: input });
   };
-  // useEffect(() => {
-  //   const oldSearch = search.get('search');
-  //   oldSearch && setInput(oldSearch);
-  // }, [search]);
+  useEffect(() => {
+    const oldSearch = search.get('search');
+    oldSearch && setInput(oldSearch);
+  }, [search]);
 
   return (
     <>
