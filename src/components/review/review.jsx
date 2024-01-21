@@ -1,7 +1,7 @@
 import css from './review.module.css';
 import React from 'react';
 
-const ReviewsComponent = ({ movie }) => {
+const ReviewsComponent = ({ movie, loadMore }) => {
   return (
     <>
       {movie.length > 0 ? (

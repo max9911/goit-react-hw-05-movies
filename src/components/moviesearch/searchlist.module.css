@@ -13,3 +13,16 @@
   text-decoration: none;
   color: black;
 }
+.loadmore {
+  margin-bottom: 50px;
+  margin-left: 50%;
+  background-color: black;
+  color: aliceblue;
+  font-size: large;
+}
+.goUp {
+  margin-left: 25%;
+  background-color: black;
+  color: aliceblue;
+  font-size: large;
+}

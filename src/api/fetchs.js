@@ -7,10 +7,10 @@ export const getTrending = async () => {
   return data;
 };
 
-export const getSearchMovies = async query => {
+export const getSearchMovies = async (query, page) => {
   try {
     const { data } = await api(
-      `/search/movie?api_key=6333a8a701072b16a61a39d74f06cc56&query=${query}&include_adult=false&language=en-US&page=1`
+      `/search/movie?api_key=6333a8a701072b16a61a39d74f06cc56&query=${query}&include_adult=false&language=en-US&page=${page}`
     );
     return data;
   } catch (err) {

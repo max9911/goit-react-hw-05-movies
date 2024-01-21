@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import css from './moviesearc.module.css';
 
 import { useSearchParams } from 'react-router-dom';
@@ -16,10 +16,10 @@ const MovieSearch = () => {
     evt.preventDefault();
     setSearch({ search: input });
   };
-  useEffect(() => {
-    const oldSearch = search.get('search');
-    oldSearch && setInput(oldSearch);
-  }, [search]);
+  // useEffect(() => {
+  //   const oldSearch = search.get('search');
+  //   oldSearch && setInput(oldSearch);
+  // }, [search]);
 
   return (
     <>
@@ -32,7 +32,7 @@ const MovieSearch = () => {
           value={input}
           onChange={inputChange}
         ></input>
-        <button type="submit" className="btn">
+        <button type="submit" key={222} className="btn">
           Search
         </button>
       </form>

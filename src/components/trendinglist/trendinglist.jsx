@@ -1,7 +1,7 @@
 import React from 'react';
 import TrendItem from './trenditem';
 
-const TrendingList = ({ trends }) => {
+const TrendingList = ({ trends, loadMore }) => {
   return (
     <>
       <h1>Trending today</h1>

@@ -6,22 +6,40 @@ import { getSearchMovies } from 'api/fetchs';
 const SearchList = () => {
   const [movies, setMovie] = useState('');
   const [searchParams] = useSearchParams();
-  const searchWord = searchParams.get('search');
+  const www = searchParams.get('search');
+  const [searchWord, setSearchWord] = useState(www);
   const location = useLocation();
+  const [page, setPage] = useState(1);
+  const [isShow, setIsShow] = useState(1);
 
-  useEffect(
-    word => {
-      const getMovie = async word => {
-        try {
-          const response = await getSearchMovies(word);
+  useEffect(() => {
+    setPage(1);
+    setSearchWord(www);
+  }, [www]);
 
-          setMovie(response.results);
-        } catch {}
-      };
-      getMovie(searchWord);
-    },
-    [searchWord]
-  );
+  useEffect(() => {
+    const getMovie = async word => {
+      try {
+        const response = await getSearchMovies(word, page);
+        response.total_pages > response.page
+          ? setIsShow(true)
+          : setIsShow(false);
+
+        setMovie(prev =>
+          page > 1 ? [...prev, ...response.results] : response.results
+        );
+      } catch {}
+    };
+    getMovie(searchWord);
+  }, [page, searchWord]);
+
+  const loadMore = evt => {
+    setPage(prev => prev + 1);
+  };
+  const goUp = evt => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
 
   return (
     <>
@@ -29,12 +47,11 @@ const SearchList = () => {
         {movies &&
           movies.map(el => (
             <Link
-              key={el.id}
               className={css.noline}
               to={`/movies/${el.id}`}
               state={location}
             >
-              <li className={css.searchItem}>
+              <li key={el.id} className={css.searchItem}>
                 <img
                   src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
                   alt="poster"
@@ -47,6 +64,16 @@ const SearchList = () => {
             </Link>
           ))}
       </ul>
+      {isShow && (
+        <>
+          <button key={'loadmore'} className={css.loadmore} onClick={loadMore}>
+            LoadMore
+          </button>
+          <button key={'goUp'} className={css.goUp} onClick={goUp}>
+            go UP
+          </button>
+        </>
+      )}
     </>
   );
 };
